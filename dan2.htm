@@ -6,38 +6,10 @@
 </head>
 <body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/line-drawing.js"></script>
 <script>
-    $(document).ready(function () {
-
-        var canvas = $("canvas")[0];
-        var context = canvas.getContext("2d");
-
-        var interval = setInterval(function(){onTick()}, 500);
-
-        function onTick() {
-            var start = getRandomPoint();
-            var finish = getRandomPoint();
-            drawLine(start, finish);
-        }
-
-        function getRandomPoint() {
-            return {
-                x: Math.floor(Math.random() * 101),
-                y: Math.floor(Math.random() * 101)
-            };
-        }
-
-        function drawLine(startPoint, endPoint) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.beginPath();
-            context.lineWidth = 1;
-            context.lineStyle = "#ff0000";
-            
-            context.moveTo(startPoint.x, startPoint.y);
-            context.lineTo(endPoint.x, endPoint.y);
-
-            context.stroke();
-        }
+    $(function () {
+       lineDrawer.start($("canvas")[0]);
     });
 </script>
 
