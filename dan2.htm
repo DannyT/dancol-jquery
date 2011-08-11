@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        var canvasContext = $("canvas")[0].getContext("2d");
+        canvasContext.beginPath();
+        canvasContext.moveTo(0, 0);
+        canvasContext.lineTo(50, 50);
+        canvasContext.lineWidth = 1;
+        canvasContext.lineStyle = "#ff0000";
+        canvasContext.stroke();
+
+    });
+</script>
+
+    <canvas></canvas>
+</body>
+
+</html>
