@@ -11,13 +11,22 @@
     $(function () {
        var wave = new Waveform( $("canvas")[0] );
       // wave.startAnim();
+    
+       $(document).bind('mousemove',function(e){ 
+                $("#log").text("e.pageX: " + e.pageX + ", e.pageY: " + e.pageY);
+                wave.setWaveShape( e.pageY, e.pageY );
+                wave.draw();
+        });
        
     });
 </script>
 
     <div class="div1"> 
         <canvas id="canvas"/> 
-    </div> 
+    </div>
+    
+    <div id="log"></div>
+    
 </body>
 
 </html>

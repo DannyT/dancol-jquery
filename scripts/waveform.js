@@ -1,3 +1,10 @@
+/**
+ * Waveform class
+ * 
+ * draws an array of dots which will respond to mouse movements and
+ * create a wave
+ */
+
 function Waveform( canvas ){
    
     if ( canvas !== undefined ){
@@ -6,10 +13,30 @@ function Waveform( canvas ){
         this.points = [];
         this.dots = [];
         this.running = false;
+        this.maxA = 100;
         this.init();
         this.draw();
     }
 }
+
+Waveform.prototype.init = function(){
+    
+    var yPos = 0;
+    var rows = 5;
+    var columns = 47;
+    var gap = 20;
+    
+    for( var i = 0; i < rows; ++i )
+    {
+        var xPos = 0;
+        for( var j = 0; j < columns; ++j )
+        {
+            this.dots.push( {x:xPos, y:yPos, colour:"0xff0000"} );
+            xPos += gap;
+        }
+        yPos += gap;
+    }
+};
 
 Waveform.prototype.startAnim = function(){
     if ( !this.running )
@@ -48,21 +75,17 @@ Waveform.prototype.draw = function(){
     
 };
 
-Waveform.prototype.init = function(){
+Waveform.prototype.setWaveShape = function(xPos, yPos){
     
-    var yPos = 0;
-    var rows = 5;
-    var columns = 47;
-    var gap = 20;
-    
-    for( var i = 0; i < rows; ++i )
+    var a = this.maxA * yPos;
+    var b = xPos;
+    var c = 10;
+  
+    var totalDots = this.dots.length;
+    for( var i = 0; i < totalDots; ++i )
     {
-        var xPos = 0;
-        for( var j = 0; j < columns; ++j )
-        {
-            this.dots.push( {x:xPos, y:yPos, colour:"0xff0000"} );
-            xPos += gap;
-        }
-        yPos += gap;
+        var dotData = this.dots[i];
+        dotData.y = ( a * Math.exp( -(Math.pow((dotData.x-b), 2))/c ) );
     }
+  
 };
