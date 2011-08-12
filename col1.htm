@@ -9,13 +9,15 @@
 <script type="text/javascript" src="scripts/waveform.js"></script>
 <script>
     $(function () {
-       //lineDrawer.start($("canvas")[0]);
-       var waveform = new Wavefrom( $("canvas")[0] );
-       waveform.draw();
+       var wave = new Waveform( $("canvas")[0] );
+      // wave.startAnim();
+       
     });
 </script>
 
-    <canvas></canvas>
+    <div class="div1"> 
+        <canvas id="canvas"/> 
+    </div> 
 </body>
 
 </html>
