@@ -93,8 +93,42 @@ Particle.prototype.draw = function( context ){
     context.lineTo(this.position.x, this.position.y + this.height );
     context.lineTo(this.position.x, this.position.y );
     context.stroke();
-    
+};
+
+/**
+ *ParticleEffect
+ */
+function ParticleEffect( context, x, y ){
+    this.context = context;
+    this.particles = [];
+    this.createParticles( x, y );
 }
+
+ParticleEffect.prototype.createParticles = function( x, y){
+    for( var i = 0; i < 10; ++i )
+    {
+        this.addParticle( new Particle( x + Math.random()*10, y) );
+    }
+}
+
+ParticleEffect.prototype.addParticle = function( particle ){
+   this.particles.push( particle );
+}
+
+ParticleEffect.prototype.update = function( particle ){
+    var totalParticles = this.particles.length;
+    for( var i = 0; i < totalParticles; ++i )
+    {
+        var item = this.particles[i];
+        item.update();
+        item.draw( this.context );
+    }
+}
+
+
+
+
+
 
 
 

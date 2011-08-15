@@ -15,6 +15,7 @@
        
        $(document).bind('mousedown',function(e){ 
                 world.addObj( new Particle( e.pageX, e.pageY) );
+                world.addObj( new ParticleEffect( world.context, e.pageX, e.pageY ));
         });
        
     });
