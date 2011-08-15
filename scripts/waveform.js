@@ -58,6 +58,7 @@ Waveform.prototype.stopAnim = function(){
 Waveform.prototype.draw = function(){
     
     var totalDots = this.dots.length;
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     for( var i = 0; i < totalDots; ++i )
     {
         var dotData = this.dots[i];
