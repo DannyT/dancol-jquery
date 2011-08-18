@@ -22,7 +22,7 @@ World.prototype.start = function(){
     {
         var worldObj = this;
         this.running = true;
-         this.interval = setInterval(function () {
+        this.interval = setInterval(function () {
             worldObj.draw();
         }, 10);
     }
@@ -63,13 +63,6 @@ function Particle( x, y ){
     this.height = 2;
 }
 
-Particle.prototype.setPosition = function( xPos, yPos){
-    this.position = { x:xPos, y:yPos};
-};
-
-Particle.prototype.setVector = function( xPos, yPos ){
-    this.vector = { x:xPos, y:yPos};
-};
 
 Particle.prototype.update = function(){
 
@@ -98,8 +91,7 @@ Particle.prototype.draw = function( context ){
 /**
  *ParticleEffect
  */
-function ParticleEffect( context, x, y ){
-    this.context = context;
+function ParticleEffect( x, y ){
     this.particles = [];
     this.createParticles( x, y );
 }
@@ -115,15 +107,25 @@ ParticleEffect.prototype.addParticle = function( particle ){
    this.particles.push( particle );
 }
 
-ParticleEffect.prototype.update = function( particle ){
+ParticleEffect.prototype.update = function( particle, context ){
     var totalParticles = this.particles.length;
     for( var i = 0; i < totalParticles; ++i )
     {
         var item = this.particles[i];
         item.update();
-        item.draw( this.context );
     }
 }
+
+ParticleEffect.prototype.draw = function( context ){
+    var totalParticles = this.particles.length;
+    for( var i = 0; i < totalParticles; ++i )
+    {
+        var item = this.particles[i];
+        item.draw( context );
+    }
+}
+
+
 
 
 

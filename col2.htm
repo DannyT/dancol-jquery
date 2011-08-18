@@ -11,17 +11,17 @@
     $(function () {
         var world = new World(  $("canvas")[0] );
         world.start();
-        world.addObj( new Particle() );
+       // world.addObj( new Particle() );
        
        $(document).bind('mousedown',function(e){ 
-                world.addObj( new Particle( e.pageX, e.pageY) );
-                world.addObj( new ParticleEffect( world.context, e.pageX, e.pageY ));
+                //world.addObj( new Particle( e.pageX, e.pageY) );
+                world.addObj( new ParticleEffect( e.pageX, e.pageY ));
         });
        
     });
 </script>
 
-    <div class="div1"> 
+    <div class="div1" width="500"> 
         <canvas id="canvas"/> 
     </div>
     
