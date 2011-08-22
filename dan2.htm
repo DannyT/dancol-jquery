@@ -4,13 +4,17 @@
 <head>
     <title></title>
 </head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<body onload="onload()">
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
 <script type="text/javascript" src="scripts/line-drawing.js"></script>
 <script>
-    $(function () {
+    /*$(function () {
        lineDrawer.start($("canvas")[0]);
-    });
+    });*/
+    function onload()
+    {
+        lineDrawer.start(document.querySelectorAll("canvas")[0]);
+    }
 </script>
 
     <canvas></canvas>
